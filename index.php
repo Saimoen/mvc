@@ -10,7 +10,7 @@ require_once(ROOT . 'app/Controller.php');
 $params = isset($_GET['p']) ? explode('/', $_GET['p']) : [];
 
 // Si au moins 1 paramètre existe
-if ($params[0] != "") {
+if (isset($params[0]) && $params[0] != "") {
     // On sauvegarde le 1er paramètre dans $controller en mettant sa 1ère lettre en majuscule
     $controller = "\\controllers\\" . ucfirst($params[0]);
     // On sauvegarde le 2ème paramètre dans $action si il existe, sinon index
@@ -22,10 +22,15 @@ if ($params[0] != "") {
         $controller = new $controller();
         if (method_exists($controller, $action)) {
             // On supprime les 2 premiers paramètres
-            unset($params[0]);
-            unset($params[1]);
+            if (isset($params[0])) {
+                unset($params[0]);
+            }
+            if (isset($params[1])) {
+                unset($params[1]);
+            }
+            
             // On appelle la méthode $action du contrôleur $controller
-            call_user_func_array([$controller, $action], $params);
+            call_user_func_array([$controller, $action], $params);            
         } else {
             // On envoie le code réponse 404
             http_response_code(404);
