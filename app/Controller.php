@@ -37,7 +37,3 @@ abstract class Controller
                 )[1] . '/' . $fichier . '.php');
         }
 }
-
-uuuuuuuuuuuuuuuu
-
-iiiiiiiiiiiiiiiiiiiii

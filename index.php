@@ -28,9 +28,9 @@ if (isset($params[0]) && $params[0] != "") {
             if (isset($params[1])) {
                 unset($params[1]);
             }
-            
+
             // On appelle la méthode $action du contrôleur $controller
-            call_user_func_array([$controller, $action], $params);            
+            call_user_func_array([$controller, $action], $params);
         } else {
             // On envoie le code réponse 404
             http_response_code(404);
