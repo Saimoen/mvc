@@ -35,5 +35,5 @@ abstract class Controller
                         "\\",
                         strtolower(get_class($this))
                 )[1] . '/' . $fichier . '.php');
-        }
+        
 }
