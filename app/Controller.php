@@ -10,7 +10,7 @@ abstract class Controller
          * @param string $model
          * @return void
          */
-        public function loadModel(string $model)
+        protected function loadModel(string $model)
         {
                 // On va chercher le fichier correspondant au modèle souhaité
                 require_once(ROOT . 'models/' . $model . '.php');
@@ -19,6 +19,7 @@ abstract class Controller
                 // On crée une instance de ce modèle. Ainsi "Articles" sera accessible par $this->Articles
                 $this->$model = new $c_model();
         }
+
         /**
          * Afficher une vue
          *
@@ -31,9 +32,6 @@ abstract class Controller
                 // Récupère les données et les extrait sous forme de variables
                 extract($data);
                 // Crée le chemin et inclut le fichier de vue
-                require_once(ROOT . 'views/' . explode(
-                        "\\",
-                        strtolower(get_class($this))
-                )[1] . '/' . $fichier . '.php');
+                require_once(ROOT . 'views/' . explode("\\", strtolower(get_class($this)))[1] . '/' . $fichier . '.php');
         }
 }

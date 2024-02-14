@@ -5,7 +5,7 @@ namespace controllers;
 class Articles extends \app\Controller
 {
         // Declare the property $Articles
-        private $Articles;
+        public $Articles;
 
         /**
          * Cette méthode affiche la liste des articles
