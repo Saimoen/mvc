@@ -31,7 +31,13 @@ abstract class Controller
         {
                 // Récupère les données et les extrait sous forme de variables
                 extract($data);
+
+                ob_start();
                 // Crée le chemin et inclut le fichier de vue
                 require_once(ROOT . 'views/' . explode("\\", strtolower(get_class($this)))[1] . '/' . $fichier . '.php');
+
+                $content = ob_get_clean();
+
+                require_once(ROOT.'views/layout/default.php');
         }
 }

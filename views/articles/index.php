@@ -10,6 +10,7 @@
     <?php foreach ($articles as $article) : ?>
         <div class="container">
             <div class="card" style="width: 18rem;">
+                <img src="<?= $article['image_lien'] ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><a href="/articles/lire/<?= $article['slug'] ?>"><?= $article['titre'] ?></a></h5>
                     <p class="card-text"><?= substr($article['contenu'], 0, 30) . "..." ?></p>
